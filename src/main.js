@@ -12,8 +12,14 @@ import router from './router'
 import store from './store'
 
 import './icons' // icon
+import * as filters from './filters' // global filters
 
-Vue.use(ElementUI)
+// register global utility filters
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
+
+Vue.use(ElementUI, { size: 'medium' })
 
 Vue.config.productionTip = false
 
