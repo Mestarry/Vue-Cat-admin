@@ -7,7 +7,14 @@ const routes = [
   {
     path: '/',
     name: 'home',
+    meta: { title: '首页', icon: 'home' },
     component: () => import('@/views/Home')
+  },
+  {
+    path: '/login',
+    name: 'login',
+    meta: { title: '登录' },
+    component: () => import('@/views/user/Login')
   }
 ]
 
