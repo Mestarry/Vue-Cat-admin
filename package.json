@@ -10,6 +10,7 @@
   "dependencies": {
     "core-js": "^3.3.2",
     "element-ui": "^2.12.0",
+    "enquire.js": "^2.1.6",
     "js-cookie": "^2.2.1",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
