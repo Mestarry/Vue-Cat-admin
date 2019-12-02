@@ -1,27 +1,44 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import layout from '@/layout'
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    meta: { title: '首页', icon: 'home' },
-    component: () => import('@/views/home/Dashboard')
-  },
+export const constantRoutes = [
   {
     path: '/login',
     name: 'login',
-    meta: { title: '登录' },
     component: () => import('@/views/login')
   }
 ]
 
-const router = new VueRouter({
-  mode: 'history',
+export const asyncRoutes = [
+  {
+    path: '/',
+    component: layout,
+    redirect: '/dashboard',
+    children: [
+      {
+        path: 'dashboard',
+        component: () => import('@/views/home/Dashboard'),
+        name: 'Dashboard',
+        meta: { title: '仪表盘', icon: 'dashboard', affix: true }
+      }
+    ]
+  }
+]
+
+const createRouter = () => new VueRouter({
+  mode: 'history', // require service support
   base: process.env.BASE_URL,
-  routes
+  scrollBehavior: () => ({ y: 0 }),
+  routes: constantRoutes
 })
 
+const router = createRouter()
+
+export function resetRouter() {
+  const newRouter = createRouter()
+  router.matcher = newRouter.matcher // reset router
+}
 export default router
