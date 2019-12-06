@@ -5,7 +5,6 @@
     <div :class="{hasTagsView:needTagsView}" class="main-container">
       <div :class="{'fixed-header':fixedHeader}">
         <navbar />
-        <tags-view v-if="needTagsView" />
       </div>
       <app-main />
     </div>
@@ -13,7 +12,8 @@
 </template>
 
 <script>
-import { AppMain, Navbar, Sidebar, TagsView } from './components'
+import { AppMain, Navbar, Sidebar } from './components'
+import ResizeMixin from './mixin/ResizeHandler'
 import { mapState } from 'vuex'
 
 export default {
@@ -21,9 +21,9 @@ export default {
   components: {
     AppMain,
     Navbar,
-    Sidebar,
-    TagsView
+    Sidebar
   },
+  mixins: [ResizeMixin],
   computed: {
     ...mapState({
       sidebar: state => state.app.sidebar,
@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     handleClickOutside() {
-      this.$store.dispatch('app/closeSideBar', { withoutAnimation: false })
+      this.$store.dispatch('closeSideBar', { withoutAnimation: false })
     }
   }
 }

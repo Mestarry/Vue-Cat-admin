@@ -20,9 +20,9 @@ export const asyncRoutes = [
     children: [
       {
         path: 'dashboard',
-        component: () => import('@/views/home/Dashboard'),
         name: 'Dashboard',
-        meta: { title: '仪表盘', icon: 'dashboard', affix: true }
+        meta: { title: '仪表盘', icon: 'dashboard', affix: true },
+        component: () => import('@/views/home/Dashboard')
       }
     ]
   }

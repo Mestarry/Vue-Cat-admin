@@ -1,9 +1,9 @@
-import { login, getInfo, logout } from '@/api/user'
-import { setToken, getToken, removeToken } from '@/utils/auth'
+import Vue from 'vue'
+import { login, getInfo } from '@/api/user'
 import { resetRouter } from '@/router'
 const user = {
   state: {
-    token: getToken(),
+    token: '',
     roles: [],
     name: 'admin',
     avatar: ''
@@ -29,7 +29,7 @@ const user = {
         login(userInfo).then(response => {
           const { data } = response
           commit('SET_TOKEN', data)
-          setToken(data)
+          Vue.ls.set('Token', data, 7 * 60 * 60 * 1000)
           resolve(data)
         }).catch(error => {
           reject(error)
@@ -54,15 +54,13 @@ const user = {
     // user logout
     Logout({ commit }) {
       return new Promise((resolve, reject) => {
-        logout().then(() => {
-          commit('SET_TOKEN', '')
-          commit('SET_ROLES', [])
-          removeToken()
-          resetRouter()
-          resolve()
-        }).catch(error => {
-          reject(error)
-        })
+        commit('SET_TOKEN', '')
+        commit('SET_ROLES', [])
+        Vue.ls.clear()
+        resetRouter()
+        resolve()
+      }).catch(error => {
+        console.log(error)
       })
     }
   }
