@@ -2,10 +2,11 @@ import Vue from 'vue'
 import axios from 'axios'
 import { MessageBox, Message } from 'element-ui'
 import store from '@/store'
+import { X_TOKEN } from '@/store/mutation-types'
 
 // create an axios instance
 const service = axios.create({
-  baseURL: 'http://localhost:8102',
+  baseURL: process.env.VUE_APP_BASE_API,
   // baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
   timeout: 5000 // request timeout
@@ -46,9 +47,9 @@ service.interceptors.response.use(
   response => {
     const res = response.data
     // if the custom code is not 20000, it is judged as an error.
-    if (res.code !== 20000) {
+    if (res.code !== 200) {
       Message({
-        message: res.msg || 'Error',
+        message: res.message || 'Error',
         type: 'error',
         duration: 5 * 1000
       })
@@ -66,11 +67,11 @@ service.interceptors.response.use(
           })
         })
           .catch(() => {
-            Vue.ls.clear()
+            Vue.ls.remove(X_TOKEN)
             location.reload()
           })
       }
-      return Promise.reject(new Error(res.msg || 'Error'))
+      return Promise.reject(new Error(res.message || 'Error'))
     } else {
       return res
     }

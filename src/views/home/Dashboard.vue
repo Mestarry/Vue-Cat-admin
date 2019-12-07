@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="~@/assets/logo.svg">
+    仪表盘
   </div>
 </template>
 

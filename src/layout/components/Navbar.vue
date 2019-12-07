@@ -8,7 +8,8 @@
       </template>
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper">
-          <img src="~@/assets/avatar.jpg" class="user-avatar">
+          <img :src="avatar" class="user-avatar">
+          <span v-if="device!=='mobile'" class="user-name">{{ name }}</span>
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown">
@@ -35,7 +36,8 @@ export default {
     ...mapGetters([
       'sidebar',
       'avatar',
-      'device'
+      'device',
+      'name'
     ])
   },
   methods: {
@@ -43,7 +45,9 @@ export default {
       this.$store.dispatch('toggleSideBar')
     },
     async logout() {
-      await this.$store.dispatch('Logout')
+      await this.$store.dispatch('Logout').then(() => {
+        this.$message.success('注销登录成功')
+      })
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
     }
   }
@@ -119,6 +123,14 @@ export default {
           width: 40px;
           height: 40px;
           border-radius: 20px;
+        }
+
+        .user-name{
+          cursor: pointer;
+          display: inline-block;
+          padding-left: 20px;
+          position: relative;
+          bottom: 15px;
         }
 
         .el-icon-caret-bottom {

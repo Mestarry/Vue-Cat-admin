@@ -1,2 +1,2 @@
-export const X_TOKEN = 'X-Token'
+export const X_TOKEN = 'token'
 

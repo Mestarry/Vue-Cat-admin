@@ -9,6 +9,11 @@ export const constantRoutes = [
     path: '/login',
     name: 'login',
     component: () => import('@/views/login')
+  },
+  {
+    path: '/404',
+    name: 'Page404',
+    component: () => import('@/views/error-page/404')
   }
 ]
 
@@ -25,6 +30,31 @@ export const asyncRoutes = [
         component: () => import('@/views/home/Dashboard')
       }
     ]
+  },
+  {
+    path: '/account',
+    name: 'Account',
+    component: layout,
+    redirect: '/account/center',
+    meta: { title: '个人信息', icon: 'people', affix: true },
+    children: [
+      {
+        path: '/account/center',
+        name: 'UserCenter',
+        meta: { title: '个人中心', affix: true },
+        component: () => import('@/views/account/center/index.vue')
+      },
+      {
+        path: '/account/settings',
+        name: 'UserSettings',
+        meta: { title: '个人设置', affix: true },
+        component: () => import('@/views/account/settings/index')
+      }
+    ]
+  },
+  {
+    path: '*',
+    redirect: '/404'
   }
 ]
 

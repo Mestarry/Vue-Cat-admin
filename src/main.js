@@ -15,6 +15,8 @@ import './icons'
 import './permission'
 import * as filters from './filters'
 
+import './../mock' // 模拟数据
+
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })

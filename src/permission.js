@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import router from './router'
 import store from './store'
+import { X_TOKEN } from './store/mutation-types'
 
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
@@ -15,7 +16,7 @@ const defaultRoutePath = '/dashboard'
 router.beforeEach(async(to, from, next) => {
   NProgress.start()
   document.title = getPageTitle(to.meta.title)
-  const hastoken = Vue.ls.get('Token')
+  const hastoken = Vue.ls.get(X_TOKEN)
   if (hastoken) {
     if (to.path === '/login') {
       next({ path: defaultRoutePath })

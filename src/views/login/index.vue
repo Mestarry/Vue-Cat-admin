@@ -136,11 +136,6 @@ export default {
               this.loading = false
             })
             .catch((error) => {
-              this.$notify({
-                title: '登录失败',
-                message: error,
-                type: 'error'
-              })
               this.loading = false
             })
         } else {

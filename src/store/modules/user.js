@@ -1,6 +1,7 @@
 import Vue from 'vue'
-import { login, getInfo } from '@/api/user'
+import { login, getInfo, logout } from '@/api/user'
 import { resetRouter } from '@/router'
+import { X_TOKEN } from '@/store/mutation-types'
 const user = {
   state: {
     token: '',
@@ -28,8 +29,8 @@ const user = {
       return new Promise((resolve, reject) => {
         login(userInfo).then(response => {
           const { data } = response
-          commit('SET_TOKEN', data)
-          Vue.ls.set('Token', data, 7 * 60 * 60 * 1000)
+          commit('SET_TOKEN', data.token)
+          Vue.ls.set(X_TOKEN, data.token, 7 * 60 * 60 * 1000)
           resolve(data)
         }).catch(error => {
           reject(error)
@@ -54,13 +55,16 @@ const user = {
     // user logout
     Logout({ commit }) {
       return new Promise((resolve, reject) => {
-        commit('SET_TOKEN', '')
-        commit('SET_ROLES', [])
-        Vue.ls.clear()
-        resetRouter()
-        resolve()
-      }).catch(error => {
-        console.log(error)
+        logout().then(response => {
+          const { data } = response
+          commit('SET_TOKEN', '')
+          commit('SET_ROLES', [])
+          Vue.ls.remove(X_TOKEN)
+          resetRouter()
+          resolve(data)
+        }).catch(error => {
+          reject(error)
+        })
       })
     }
   }
