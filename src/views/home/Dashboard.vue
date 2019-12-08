@@ -8,6 +8,6 @@
 // @ is an alias to /src
 
 export default {
-  name: 'dashboard'
+  name: 'Dashboard'
 }
 </script>

@@ -135,7 +135,7 @@ export default {
               })
               this.loading = false
             })
-            .catch(( ) => {
+            .catch(() => {
               this.loading = false
             })
         } else {
