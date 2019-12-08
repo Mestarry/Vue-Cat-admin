@@ -1,54 +1,65 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import layout from '@/layout'
+import Layout from '@/layout'
 
 Vue.use(VueRouter)
 
 export const constantRoutes = [
   {
     path: '/login',
-    name: 'login',
-    component: () => import('@/views/login')
+    component: () => import('@/views/login'),
+    name: 'Login'
   },
   {
     path: '/404',
-    name: 'Page404',
-    component: () => import('@/views/error-page/404')
+    component: () => import('@/views/error-page/404'),
+    name: 'Page404'
   }
 ]
 
 export const asyncRoutes = [
   {
     path: '/',
-    component: layout,
+    component: Layout,
     redirect: '/dashboard',
     children: [
       {
         path: 'dashboard',
+        component: () => import('@/views/home/Dashboard'),
         name: 'Dashboard',
-        meta: { title: '仪表盘', icon: 'dashboard', affix: true },
-        component: () => import('@/views/home/Dashboard')
+        meta: { title: '仪表盘', icon: 'dashboard' }
       }
     ]
   },
   {
     path: '/account',
-    name: 'Account',
-    component: layout,
+    component: Layout,
     redirect: '/account/center',
-    meta: { title: '个人信息', icon: 'user', affix: true, roles: ['admin'] },
+    meta: { title: '个人信息', icon: 'user', roles: ['admin'] },
     children: [
       {
-        path: '/account/center',
+        path: 'center',
+        component: () => import('@/views/account/center/index.vue'),
         name: 'UserCenter',
-        meta: { title: '个人中心', affix: true },
-        component: () => import('@/views/account/center/index.vue')
+        meta: { title: '个人中心' }
       },
       {
-        path: '/account/settings',
+        path: 'settings',
+        component: () => import('@/views/account/settings/index'),
         name: 'UserSettings',
-        meta: { title: '个人设置', affix: true },
-        component: () => import('@/views/account/settings/index')
+        meta: { title: '个人设置' }
+      }
+    ]
+  },
+  {
+    path: '/error-page',
+    component: Layout,
+    children: [
+      {
+        path: '404',
+        component: () => import('@/views/error-page/404'),
+        name: 'ErrorPage',
+        meta: { title: 'ErrorPage', icon: '404' }
       }
     ]
   },
