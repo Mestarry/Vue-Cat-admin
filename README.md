@@ -10,6 +10,8 @@
 
 使用时，可直接将vue-element-admin的组件copy过来即可。
 
+[在线预览]( http://www.liwanbin.club/ ) 
+
 ### 开发
 
 ```
