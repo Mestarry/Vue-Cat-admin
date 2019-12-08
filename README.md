@@ -2,7 +2,7 @@
 
 ### 简介
 
-这是一个后台管理模板框架，基于vue-element-admin。 
+这是一个后台管理模板框架，基于[vue-element-admin]( https://github.com/PanJiaChen/vue-element-admin )。 
 
 有一些小改动，但不影响使用vue-element-admin的组件。
 
@@ -36,3 +36,4 @@ npm run build
 ```
 
  
+
