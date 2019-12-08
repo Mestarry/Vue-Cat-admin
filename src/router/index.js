@@ -36,7 +36,7 @@ export const asyncRoutes = [
     name: 'Account',
     component: layout,
     redirect: '/account/center',
-    meta: { title: '个人信息', icon: 'people', affix: true },
+    meta: { title: '个人信息', icon: 'user', affix: true, roles: ['admin'] },
     children: [
       {
         path: '/account/center',

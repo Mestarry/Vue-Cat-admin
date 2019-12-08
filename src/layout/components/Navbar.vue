@@ -130,6 +130,7 @@ export default {
           display: inline-block;
           padding-left: 20px;
           position: relative;
+          font-size: 16px;
           bottom: 15px;
         }
 
