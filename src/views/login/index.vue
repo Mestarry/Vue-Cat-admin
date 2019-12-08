@@ -19,8 +19,8 @@
           <el-form-item prop="username">
             <el-input
               ref="username"
-              prefix-icon="el-icon-user"
               v-model="loginForm.username"
+              prefix-icon="el-icon-user"
               placeholder="用户名"
               name="username"
               type="text"
@@ -32,9 +32,9 @@
           <el-form-item prop="password">
             <el-input
               ref="password"
+              v-model="loginForm.password"
               type="password"
               prefix-icon="el-icon-lock"
-              v-model="loginForm.password"
               placeholder="密码"
               name="password"
               tabindex="2"
@@ -63,8 +63,8 @@ import { mapActions } from 'vuex'
 import { validUsername } from '@/utils/validate'
 import { timeFix } from '@/utils'
 export default {
-  name: 'login',
-  data(){
+  name: 'Login',
+  data() {
     const validateUsername = (rule, value, callback) => {
       if (!validUsername(value)) {
         callback(new Error('用户名不能少于5位！'))
@@ -135,7 +135,7 @@ export default {
               })
               this.loading = false
             })
-            .catch((error) => {
+            .catch(() => {
               this.loading = false
             })
         } else {
