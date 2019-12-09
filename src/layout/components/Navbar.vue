@@ -3,7 +3,6 @@
     <hamburger id="hamburger-container" :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
 
     <div class="right-menu">
-      <a class="right-menu-item hover-effect" href="https://github.com/Mestarry/vue-el-admin" target="_blank">Github</a>
       <template v-if="device!=='mobile'">
         <screenfull id="screenfull" class="right-menu-item hover-effect" />
       </template>
