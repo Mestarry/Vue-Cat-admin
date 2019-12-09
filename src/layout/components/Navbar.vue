@@ -3,6 +3,7 @@
     <hamburger id="hamburger-container" :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
 
     <div class="right-menu">
+      <a class="right-menu-item hover-effect" href="https://github.com/Mestarry/vue-el-admin" target="_blank">Github</a>
       <template v-if="device!=='mobile'">
         <screenfull id="screenfull" class="right-menu-item hover-effect" />
       </template>
@@ -13,6 +14,12 @@
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown">
+          <router-link to="/account/center">
+            <el-dropdown-item>个人中心</el-dropdown-item>
+          </router-link>
+          <router-link to="/account/settings">
+            <el-dropdown-item>个人设置</el-dropdown-item>
+          </router-link>
           <el-dropdown-item divided>
             <span style="display:block;" @click="logout">退出登录</span>
           </el-dropdown-item>
@@ -128,9 +135,8 @@ export default {
         .user-name{
           cursor: pointer;
           display: inline-block;
-          padding-left: 20px;
+          padding-left: 10px;
           position: relative;
-          font-size: 16px;
           bottom: 15px;
         }
 
