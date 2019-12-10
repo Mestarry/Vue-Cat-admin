@@ -35,19 +35,11 @@ export const asyncRoutes = [
     path: '/account',
     component: Layout,
     redirect: '/account/center',
-    meta: { title: '个人信息', icon: 'user', roles: ['admin'] },
     children: [
       {
         path: 'center',
-        component: () => import('@/views/account/center/index.vue'),
-        name: 'UserCenter',
-        meta: { title: '个人中心' }
-      },
-      {
-        path: 'settings',
-        component: () => import('@/views/account/settings/index'),
-        name: 'UserSettings',
-        meta: { title: '个人设置' }
+        meta: { title: '账户信息', icon: 'user', roles: ['admin'] },
+        component: () => import('@/views/account/index.vue')
       }
     ]
   },

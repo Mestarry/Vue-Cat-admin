@@ -14,10 +14,7 @@
         </div>
         <el-dropdown-menu slot="dropdown">
           <router-link to="/account/center">
-            <el-dropdown-item>个人中心</el-dropdown-item>
-          </router-link>
-          <router-link to="/account/settings">
-            <el-dropdown-item>个人设置</el-dropdown-item>
+            <el-dropdown-item>账户中心</el-dropdown-item>
           </router-link>
           <el-dropdown-item divided>
             <span style="display:block;" @click="logout">退出登录</span>
