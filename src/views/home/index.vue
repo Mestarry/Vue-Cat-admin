@@ -51,6 +51,7 @@ export default {
     background-color: #e3e3e3;
     min-height: calc(100vh - 50px);
     padding: 50px 60px 0px;
+    position: relative;
     .pan-info-roles {
       font-size: 12px;
       font-weight: 700;
