@@ -21,13 +21,13 @@ export const asyncRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard',
+    redirect: '/home',
     children: [
       {
-        path: 'dashboard',
-        component: () => import('@/views/home/Dashboard'),
-        name: 'Dashboard',
-        meta: { title: '仪表盘', icon: 'dashboard' }
+        path: 'home',
+        component: () => import('@/views/home/index.vue'),
+        name: 'Home',
+        meta: { title: '主页', icon: 'homefill' }
       }
     ]
   },
@@ -38,8 +38,9 @@ export const asyncRoutes = [
     children: [
       {
         path: 'center',
-        meta: { title: '账户信息', icon: 'user', roles: ['admin'] },
-        component: () => import('@/views/account/index.vue')
+        component: () => import('@/views/account/index.vue'),
+        name: 'AccountCenter',
+        meta: { title: '账户信息', icon: 'user', roles: ['admin'] }
       }
     ]
   },

@@ -11,7 +11,7 @@ import getPageTitle from '@/utils/get-page-title'
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
 const whiteList = ['/login'] // no redirect whitelist
-const defaultRoutePath = '/dashboard'
+const defaultRoutePath = '/home'
 
 router.beforeEach(async(to, from, next) => {
   NProgress.start()
