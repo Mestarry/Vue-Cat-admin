@@ -36,11 +36,11 @@
           </div>
           <div class="progress-item">
             <span>JavaScript</span>
-            <el-progress :percentage="18" />
+            <el-progress :percentage="66" />
           </div>
           <div class="progress-item">
             <span>Css</span>
-            <el-progress :percentage="12" />
+            <el-progress :percentage="88" />
           </div>
           <div class="progress-item">
             <span>ESLint</span>
