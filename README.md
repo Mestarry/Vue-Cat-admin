@@ -1,6 +1,6 @@
-# vue-el-admin
+### Vue-Admin-Element
 
-### 简介
+#### 简介
 
 这是一个后台管理模板框架，基于[vue-element-admin]( https://github.com/PanJiaChen/vue-element-admin )。 
 
@@ -12,14 +12,14 @@
 
 [在线预览]( http://www.liwanbin.club/ ) 
 
-### 开发
+#### 开发
 
 ```
 # 克隆项目
-git clone https://github.com/Mestarry/vue-el-admin.git
+git clone https://github.com/Mestarry/Vue-Admin-Element.git
 
 # 进入项目目录
-cd vue-el-admin
+cd Vue-Admin-Element
 
 # 安装依赖
 npm install
@@ -30,7 +30,7 @@ npm run serve
 
  浏览器访问 [http://localhost:2019](http://localhost:2019/) 
 
-## 发布
+#### 发布
 
 ```
 # 构建
