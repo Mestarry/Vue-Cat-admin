@@ -21,8 +21,8 @@ export const asyncRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/welcome',
     meta: { title: '主页', icon: 'homefill' },
+    redirect: '/welcome',
     children: [
       {
         path: 'welcome',

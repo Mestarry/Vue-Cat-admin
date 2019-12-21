@@ -21,7 +21,7 @@ service.interceptors.request.use(
       // let each request carry token
       // ['X-Token'] is a custom headers key
       // please modify it according to the actual situation
-      config.headers['X-Token'] = Vue.ls.get('Token')
+      config.headers['C-Token'] = Vue.ls.get('Token')
     }
     return config
   },
