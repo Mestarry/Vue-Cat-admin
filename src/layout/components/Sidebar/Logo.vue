@@ -24,7 +24,7 @@ export default {
   },
   data() {
     return {
-      title: 'Vue El Admin',
+      title: 'Vue Cat Admin',
       logo: 'favicon.png'
     }
   }

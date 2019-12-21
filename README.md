@@ -1,4 +1,4 @@
-### Vue-Admin-Element
+### Vue-Cat-admin
 
 #### 简介
 
@@ -16,10 +16,10 @@
 
 ```
 # 克隆项目
-git clone https://github.com/Mestarry/Vue-Admin-Element.git
+git clone https://github.com/Mestarry/Vue-Cat-admin.git
 
 # 进入项目目录
-cd Vue-Admin-Element
+cd Vue-Cat-admin
 
 # 安装依赖
 npm install

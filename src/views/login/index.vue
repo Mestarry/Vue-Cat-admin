@@ -6,11 +6,11 @@
         <div class="header">
           <a href="/">
             <img src="~@/assets/logo.svg" class="logo" alt="logo">
-            <span class="title">Vue el admin</span>
+            <span class="title">Vue Cat admin</span>
           </a>
         </div>
         <div class="desc">
-          Vue el admin 是我自己写的一个后台管理模板
+          Vue Cat admin 是一个后台管理基础模板
         </div>
       </div>
       <!-- main -->

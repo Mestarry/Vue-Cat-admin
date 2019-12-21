@@ -21,13 +21,20 @@ export const asyncRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/home',
+    redirect: '/welcome',
+    meta: { title: '主页', icon: 'homefill' },
     children: [
       {
-        path: 'home',
-        component: () => import('@/views/home/index.vue'),
-        name: 'Home',
-        meta: { title: '主页', icon: 'homefill' }
+        path: 'welcome',
+        component: () => import('@/views/home/Welcome.vue'),
+        name: 'Welcome',
+        meta: { title: '欢迎页' }
+      },
+      {
+        path: 'analysis',
+        component: () => import('@/views/home/Analysis.vue'),
+        name: 'Analysis',
+        meta: { title: '分析页' }
       }
     ]
   },

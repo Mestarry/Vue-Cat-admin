@@ -34,7 +34,7 @@ export default {
       'roles'
     ])
   },
-  created(){
+  created() {
     this.welcome = `${timeFix()}，${welcome()}`
   }
 }
