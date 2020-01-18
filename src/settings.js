@@ -3,12 +3,6 @@ module.exports = {
 
   /**
    * @type {boolean} true | false
-   * @description Whether show the settings right-panel
-   */
-  showSettings: process.env.NODE_ENV !== 'production',
-
-  /**
-   * @type {boolean} true | false
    * @description Whether need tagsView
    */
   tagsView: false,
