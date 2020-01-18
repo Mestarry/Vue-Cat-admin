@@ -10,6 +10,22 @@ const name = defaultSettings.title || 'Vue Cat Admin' // page title
 
 const port = process.env.port || process.env.npm_config_port || 2020 // dev port
 
+const assetsCDN = {
+  // webpack build externals
+  externals: {
+    vue: 'Vue',
+    'vue-router': 'VueRouter',
+    vuex: 'Vuex'
+  },
+  css: [],
+  // https://unpkg.com/browse/vue@2.6.10/
+  js: [
+    '//cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js',
+    '//cdn.jsdelivr.net/npm/vue-router@3.1.3/dist/vue-router.min.js',
+    '//cdn.jsdelivr.net/npm/vuex@3.1.1/dist/vuex.min.js'
+  ]
+}
+
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
@@ -17,7 +33,6 @@ module.exports = {
   productionSourceMap: false,
   devServer: {
     port: port,
-    open: true,
     overlay: {
       warnings: false,
       errors: true
@@ -31,7 +46,9 @@ module.exports = {
       alias: {
         '@': resolve('src')
       }
-    }
+    },
+    // if prod, add externals
+    externals: process.env.NODE_ENV === 'production' ? assetsCDN.externals : {}
   },
   chainWebpack(config) {
     config.plugins.delete('preload')
@@ -69,6 +86,18 @@ module.exports = {
     // https://webpack.js.org/configuration/devtool/#development
       .when(process.env.NODE_ENV === 'development',
         config => config.devtool('cheap-source-map')
+      )
+
+    config
+      .when(process.env.NODE_ENV === 'production',
+        config => {
+          config
+            .plugin('html')
+            .tap(args => {
+              args[0].cdn = assetsCDN
+              return args
+            })
+        }
       )
 
     config
