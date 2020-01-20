@@ -1,59 +1,16 @@
-'use strict'
 const path = require('path')
-const defaultSettings = require('./src/settings.js')
-
+const port = process.env.port || process.env.npm_config_port || 2019
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
-const name = defaultSettings.title || 'Vue Cat Admin' // page title
-
-const port = process.env.port || process.env.npm_config_port || 2020 // dev port
-
-const assetsCDN = {
-  // webpack build externals
-  externals: {
-    vue: 'Vue',
-    'vue-router': 'VueRouter',
-    vuex: 'Vuex'
-  },
-  css: [],
-  // https://unpkg.com/browse/vue@2.6.10/
-  js: [
-    '//cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js',
-    '//cdn.jsdelivr.net/npm/vue-router@3.1.3/dist/vue-router.min.js',
-    '//cdn.jsdelivr.net/npm/vuex@3.1.1/dist/vuex.min.js'
-  ]
-}
-
-// All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
-  lintOnSave: process.env.NODE_ENV === 'development',
-  productionSourceMap: false,
+  lintOnSave: false,
   devServer: {
     port: port,
-    overlay: {
-      warnings: false,
-      errors: true
-    }
-  },
-  configureWebpack: {
-    // provide the app's title in webpack's name field, so that
-    // it can be accessed in index.html to inject the correct title.
-    name: name,
-    resolve: {
-      alias: {
-        '@': resolve('src')
-      }
-    },
-    // if prod, add externals
-    externals: process.env.NODE_ENV === 'production' ? assetsCDN.externals : {}
+    open: true
   },
   chainWebpack(config) {
-    config.plugins.delete('preload')
-    config.plugins.delete('prefetch')
-
     // set svg-sprite-loader
     config.module
       .rule('svg')
@@ -71,7 +28,6 @@ module.exports = {
       })
       .end()
 
-    // set preserveWhitespace
     config.module
       .rule('vue')
       .use('vue-loader')
@@ -83,25 +39,13 @@ module.exports = {
       .end()
 
     config
-    // https://webpack.js.org/configuration/devtool/#development
+      // https://webpack.js.org/configuration/devtool/#development
       .when(process.env.NODE_ENV === 'development',
         config => config.devtool('cheap-source-map')
       )
 
     config
-      .when(process.env.NODE_ENV === 'production',
-        config => {
-          config
-            .plugin('html')
-            .tap(args => {
-              args[0].cdn = assetsCDN
-              return args
-            })
-        }
-      )
-
-    config
-      .when(process.env.NODE_ENV === 'production',
+      .when(process.env.NODE_ENV !== 'development',
         config => {
           config
             .plugin('ScriptExtHtmlWebpackPlugin')
