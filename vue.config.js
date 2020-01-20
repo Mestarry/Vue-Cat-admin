@@ -6,6 +6,7 @@ function resolve(dir) {
 
 module.exports = {
   lintOnSave: false,
+  assetsDir: 'static',
   devServer: {
     port: port,
     open: true
