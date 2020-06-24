@@ -75,7 +75,7 @@ VueRouter.prototype.push = function push(location) {
 }
 
 const createRouter = () => new VueRouter({
-  // mode: 'history',
+  mode: 'history',
   base: process.env.BASE_URL,
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRoutes

@@ -1,6 +1,6 @@
 {
   "name": "vue-cat-admin",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "description": "A background administration base template. Newest development stack of vue. Refer to vue-element-admin.",
   "author": "LiWanBin <liwanbin_vip@163.com>",
   "scripts": {
