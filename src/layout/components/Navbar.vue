@@ -1,46 +1,47 @@
 <template>
   <div class="navbar">
-    <hamburger id="hamburger-container" :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
+    <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
+
+    <breadcrumb class="breadcrumb-container" />
 
     <div class="right-menu">
+
       <template v-if="device!=='mobile'">
         <screenfull id="screenfull" class="right-menu-item hover-effect" />
       </template>
-      <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
-        <div class="avatar-wrapper">
-          <img :src="avatar" class="user-avatar">
-          <span v-if="device!=='mobile'" class="user-name">{{ name }}</span>
-          <i class="el-icon-caret-bottom" />
-        </div>
-        <el-dropdown-menu slot="dropdown">
-          <router-link to="/account/center">
-            <el-dropdown-item>账户中心</el-dropdown-item>
-          </router-link>
-          <el-dropdown-item divided>
-            <span style="display:block;" @click="logout">退出登录</span>
-          </el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
+
+      <div class="right-menu-item">
+        <img :src="`${basePath}avatar.jpg`" class="user-avatar">
+        <span v-if="device!=='mobile'" class="user-name">{{ name ? name:'admin' }}</span>
+        <span class="logout-btn" @click="logout"><i class="el-icon-switch-button" /> 退出</span>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import { basePath } from '@/settings'
+import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
 import Screenfull from '@/components/Screenfull'
 
 export default {
   components: {
+    Breadcrumb,
     Hamburger,
     Screenfull
+  },
+  data() {
+    return {
+      name: 'Aoligei',
+      basePath
+    }
   },
   computed: {
     ...mapGetters([
       'sidebar',
-      'device',
-      'avatar',
-      'name'
+      'device'
     ])
   },
   methods: {
@@ -58,6 +59,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import './../../styles/variables.scss';
 .navbar {
   height: 50px;
   overflow: hidden;
@@ -82,6 +84,19 @@ export default {
     float: left;
   }
 
+  .pro-two{
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 10px;
+    cursor: pointer;
+    transition: background .3s;
+
+    &:hover {
+      background: rgba(0, 0, 0, .025)
+    }
+  }
+
   .errLog-container {
     display: inline-block;
     vertical-align: top;
@@ -98,50 +113,49 @@ export default {
 
     .right-menu-item {
       display: inline-block;
-      padding: 0 8px;
+      padding-left: 10px;
+      padding-right: 10px;
       height: 100%;
       font-size: 18px;
       color: #5a5e66;
       vertical-align: text-bottom;
 
       &.hover-effect {
-        cursor: pointer;
         transition: background .3s;
 
         &:hover {
           background: rgba(0, 0, 0, .025)
         }
       }
-    }
 
-    .avatar-container {
-      margin-right: 30px;
+      .user-avatar {
+        width: 50px;
+        height: 50px;
+        padding: 5px;
+        border-radius: 15px;
+      }
 
-      .avatar-wrapper {
-        margin-top: 5px;
+      .user-name,
+      .logout-btn{
+        display: inline-block;
+        height: 50px;
+        line-height: 50px;
+        padding-left: 5px;
+        padding-right: 5px;
         position: relative;
+        top: -19px;
+        font-size: 16px;
+      }
 
-        .user-avatar {
-          cursor: pointer;
-          width: 40px;
-          height: 40px;
-          border-radius: 20px;
-        }
+      .logout-btn{
+        cursor: pointer;
+        padding-left: 10px;
+        padding-right: 10px;
+        color: $menuActiveText;
+        transition: background .3s;
 
-        .user-name{
-          cursor: pointer;
-          display: inline-block;
-          padding-left: 10px;
-          position: relative;
-          bottom: 15px;
-        }
-
-        .el-icon-caret-bottom {
-          cursor: pointer;
-          position: absolute;
-          right: -20px;
-          top: 25px;
-          font-size: 12px;
+        &:hover {
+          background: rgba(0, 0, 0, .025)
         }
       }
     }

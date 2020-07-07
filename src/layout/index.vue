@@ -2,7 +2,7 @@
   <div :class="classObj" class="app-wrapper">
     <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
     <sidebar class="sidebar-container" />
-    <div :class="{hasTagsView:needTagsView}" class="main-container">
+    <div class="main-container">
       <div :class="{'fixed-header':fixedHeader}">
         <navbar />
       </div>
@@ -12,24 +12,22 @@
 </template>
 
 <script>
-import { AppMain, Navbar, Sidebar } from './components'
-import ResizeMixin from './mixin/ResizeHandler'
 import { mapState } from 'vuex'
+import { Navbar, Sidebar, AppMain } from './components'
+import ResizeMixin from './mixin/ResizeHandler'
 
 export default {
   name: 'Layout',
   components: {
-    AppMain,
     Navbar,
-    Sidebar
+    Sidebar,
+    AppMain
   },
   mixins: [ResizeMixin],
   computed: {
     ...mapState({
       sidebar: state => state.app.sidebar,
       device: state => state.app.device,
-      showSettings: state => state.settings.showSettings,
-      needTagsView: state => state.settings.tagsView,
       fixedHeader: state => state.settings.fixedHeader
     }),
     classObj() {
@@ -58,13 +56,11 @@ export default {
     position: relative;
     height: 100%;
     width: 100%;
-
-    &.mobile.openSidebar {
+    &.mobile.openSidebar{
       position: fixed;
       top: 0;
     }
   }
-
   .drawer-bg {
     background: #000;
     opacity: 0.3;
@@ -82,6 +78,7 @@ export default {
     z-index: 9;
     width: calc(100% - #{$sideBarWidth});
     transition: width 0.28s;
+    padding-right: 0 !important;
   }
 
   .hideSidebar .fixed-header {

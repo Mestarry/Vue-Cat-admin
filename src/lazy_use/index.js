@@ -26,15 +26,13 @@ import {
   Loading,
   Message,
   Notification,
-  Scrollbar
+  Scrollbar,
+  Breadcrumb,
+  BreadcrumbItem
 } from 'element-ui'
 
-import VeLine from 'v-charts/lib/line.common' // v-charts图表
-import VeHistogram from 'v-charts/lib/histogram.common'
-
-Vue.component(VeLine.name, VeLine)
-Vue.component(VeHistogram.name, VeHistogram)
-
+Vue.use(BreadcrumbItem)
+Vue.use(Breadcrumb)
 Vue.use(Dropdown)
 Vue.use(DropdownMenu)
 Vue.use(DropdownItem)

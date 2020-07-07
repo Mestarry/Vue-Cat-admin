@@ -11,7 +11,7 @@
         <div class="bullshit__oops">OOPS!</div>
         <div class="bullshit__headline">{{ message }}</div>
         <div class="bullshit__info">Please check that the URL you entered is correct, or click the button below to return to the homepage.</div>
-        <a href="/admin/" class="bullshit__return-home">Back to home</a>
+        <div class="bullshit__return-home" @click="toHome">Back to home</div>
       </div>
     </div>
   </div>
@@ -24,6 +24,11 @@ export default {
   computed: {
     message() {
       return 'The webmaster said that you can not enter this page...'
+    }
+  },
+  methods: {
+    toHome() {
+      this.$router.push('/')
     }
   }
 }

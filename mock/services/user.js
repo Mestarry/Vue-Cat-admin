@@ -1,19 +1,19 @@
 import Mock from 'mockjs2'
 import { builder, getBody } from '../util'
 
-const username = ['admin']
+const userName = ['admin']
 const password = ['123456']
 
 const login = (options) => {
   const body = getBody(options)
-  if (!username.includes(body.username) || !password.includes(body.password)) {
+  if (!userName.includes(body.userName) || !password.includes(body.password)) {
     return builder({ isLogin: true }, '账户或密码错误', 401)
   }
 
   return builder({
     'id': Mock.mock('@guid'),
     'name': Mock.mock('@name'),
-    'username': 'admin',
+    'userName': 'admin',
     'password': '123456',
     'status': 1,
     'telephone': '',
@@ -28,7 +28,7 @@ const info = (options) => {
     'name': 'Aoligei',
     'username': 'admin',
     'password': '123456',
-    'avatar': 'avatar.jpg',
+    'avatar': '/avatar.jpg',
     'roles': ['admin']
   }
   return builder(userInfo, '', 200)

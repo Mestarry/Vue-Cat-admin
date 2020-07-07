@@ -1,7 +1,6 @@
 <template>
   <div class="dashboard-editor-container">
     <div class=" clearfix">
-      <github-corner style="position: absolute; top: 0px; border: 0; right: 0;" />
       <div class="info-container">
         <span class="display_name">{{ name }}</span>
         <span style="font-size:20px;padding-top:20px;display:inline-block;">{{ welcome }}</span>
@@ -15,12 +14,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import GithubCorner from '@/components/GithubCorner'
 import { timeFix, welcome } from '@/utils'
 
 export default {
   name: 'DashboardEditor',
-  components: { GithubCorner },
   data() {
     return {
       emptyGif: 'https://wpimg.wallstcn.com/0e03b7da-db9e-4819-ba10-9016ddfdaed3',
