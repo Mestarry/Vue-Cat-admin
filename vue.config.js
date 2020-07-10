@@ -21,8 +21,9 @@ const assetsCDN = {
 }
 
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? '/admin/' : process.env.NODE_ENV === 'test' ? '/book/admin/' : '/',
-  lintOnSave: false,
+  publicPath: process.env.NODE_ENV === 'development' ? '/' : '/admin/',
+  lintOnSave: true,
+  productionSourceMap: false,
   devServer: {
     port: port,
     open: true

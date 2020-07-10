@@ -1,11 +1,12 @@
 {
   "name": "vue-cat-admin",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "A background administration base template. Newest development stack of vue. Refer to vue-element-admin.",
   "author": "LiWanBin <liwanbin_vip@163.com>",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build:test": "vue-cli-service build --mode test",
     "lint": "vue-cli-service lint",
     "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml"
   },

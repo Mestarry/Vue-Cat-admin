@@ -3,7 +3,7 @@
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">{{ proTitle }}</h3>
+        <h3 class="title">{{ title }}</h3>
       </div>
 
       <el-form-item prop="userName">
@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import { proTitle } from '@/settings'
+import { title } from '@/settings'
 import { validUsername } from '@/utils/validate'
 import { timeFix } from '@/utils/index'
 export default {
@@ -75,10 +75,10 @@ export default {
       }
     }
     return {
-      proTitle,
+      title,
       loginForm: {
-        userName: '',
-        password: ''
+        userName: 'admin',
+        password: '123456'
       },
       loginRules: {
         userName: [{ required: true, trigger: 'blur', validator: validateUsername }],

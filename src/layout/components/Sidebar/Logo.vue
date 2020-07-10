@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { basePath } from '@/settings'
+import { basePath, title } from '@/settings'
 export default {
   name: 'SidebarLogo',
   props: {
@@ -25,7 +25,7 @@ export default {
   },
   data() {
     return {
-      title: 'Vue Cat admin',
+      title,
       logo: `${basePath}favicon.png`
     }
   }

@@ -12,7 +12,7 @@
 
       <div class="right-menu-item">
         <img :src="`${basePath}avatar.jpg`" class="user-avatar">
-        <span v-if="device!=='mobile'" class="user-name">{{ name ? name:'admin' }}</span>
+        <span v-if="device!=='mobile'" class="user-name">{{ name }}</span>
         <span class="logout-btn" @click="logout"><i class="el-icon-switch-button" /> 退出</span>
       </div>
     </div>
@@ -48,11 +48,11 @@ export default {
     toggleSideBar() {
       this.$store.dispatch('toggleSideBar')
     },
-    async logout() {
-      await this.$store.dispatch('Logout').then(() => {
+    logout() {
+      this.$store.dispatch('Logout').then(() => {
         this.$message.success('注销登录成功')
+        this.$router.push(`/login?redirect=${this.$route.fullPath}`)
       })
-      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
     }
   }
 }

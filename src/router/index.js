@@ -21,27 +21,13 @@ export const asyncRoutes = [
   {
     path: '/',
     component: Layout,
-    meta: { title: '主页', icon: 'homefill' },
     redirect: '/welcome',
     children: [
       {
         path: 'welcome',
         component: () => import('@/views/home/Welcome.vue'),
         name: 'Welcome',
-        meta: { title: '欢迎页' }
-      }
-    ]
-  },
-  {
-    path: '/account',
-    component: Layout,
-    redirect: '/account/index',
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/account/index.vue'),
-        name: 'AccountCenter',
-        meta: { title: '用户管理', icon: 'user', roles: ['admin'] }
+        meta: { title: '欢迎页', icon: 'homefill' }
       }
     ]
   },
