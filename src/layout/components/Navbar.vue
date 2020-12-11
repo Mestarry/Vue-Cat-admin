@@ -34,14 +34,14 @@ export default {
   },
   data() {
     return {
-      name: 'Aoligei',
       basePath
     }
   },
   computed: {
     ...mapGetters([
       'sidebar',
-      'device'
+      'device',
+      'name'
     ])
   },
   methods: {

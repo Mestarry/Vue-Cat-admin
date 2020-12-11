@@ -27,7 +27,7 @@ export const asyncRoutes = [
         path: 'welcome',
         component: () => import('@/views/home/Welcome.vue'),
         name: 'Welcome',
-        meta: { title: '欢迎页', icon: 'homefill' }
+        meta: { title: '欢迎页', icon: 'homefill', affix: true }
       }
     ]
   },
