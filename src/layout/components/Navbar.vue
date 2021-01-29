@@ -11,7 +11,7 @@
       </template>
 
       <div class="right-menu-item">
-        <img :src="`${basePath}avatar.jpg`" class="user-avatar">
+        <img :src="`${basePath}avatar.png`" class="user-avatar">
         <span v-if="device!=='mobile'" class="user-name">{{ name }}</span>
         <span class="logout-btn" @click="logout"><i class="el-icon-switch-button" /> 退出</span>
       </div>
