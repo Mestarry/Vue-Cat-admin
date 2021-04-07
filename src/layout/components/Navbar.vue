@@ -11,7 +11,8 @@
       </template>
 
       <div class="right-menu-item">
-        <img :src="`${publicPath}avatar.png`" class="user-avatar">
+        <img v-if="avatar" :src="avatar" class="user-avatar">
+        <img v-else src="~@/assets/images/avatar.png" class="user-avatar">
         <span v-if="device!=='mobile'" class="user-name">{{ name }}</span>
         <span class="logout-btn" @click="logout"><i class="el-icon-switch-button" /> 退出</span>
       </div>
@@ -31,16 +32,12 @@ export default {
     Hamburger,
     Screenfull
   },
-  data() {
-    return {
-      publicPath: process.env.VUE_APP_PUBLIC_PATH
-    }
-  },
   computed: {
     ...mapGetters([
       'sidebar',
       'device',
-      'name'
+      'name',
+      'avatar'
     ])
   },
   methods: {

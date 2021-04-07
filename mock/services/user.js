@@ -28,7 +28,7 @@ const info = (options) => {
     'name': 'Aoligei',
     'username': 'admin',
     'password': '123456',
-    'avatar': '/avatar.jpg',
+    'avatar': '',
     'roles': ['admin']
   }
   return builder(userInfo, '', 200)
