@@ -1,8 +1,5 @@
 const path = require('path')
-const port = process.env.port || process.env.npm_config_port || 5119
-function resolve(dir) {
-  return path.join(__dirname, dir)
-}
+const port = 5519
 
 const assetsCDN = {
   // webpack build externals
@@ -12,16 +9,19 @@ const assetsCDN = {
     vuex: 'Vuex'
   },
   css: [],
-  // https://unpkg.com/browse/vue@2.6.10/
+  // https://unpkg.com/browse/vue@2.6.11/
   js: [
-    '//cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js',
+    '//cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js',
     '//cdn.jsdelivr.net/npm/vue-router@3.1.3/dist/vue-router.min.js',
     '//cdn.jsdelivr.net/npm/vuex@3.1.1/dist/vuex.min.js'
   ]
 }
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
 
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'development' ? '/' : '/admin/',
+  publicPath: process.env.VUE_APP_PUBLIC_PATH,
   lintOnSave: true,
   productionSourceMap: false,
   devServer: {

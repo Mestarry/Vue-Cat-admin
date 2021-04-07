@@ -1,7 +1,5 @@
 module.exports = {
   title: 'Vue Cat admin',
-  basePath: process.env.NODE_ENV === 'production' ? '/admin/' : '/',
-  proTitle: 'Vue Cat admin',
   /**
    * @type {boolean} true | false
    * @description Whether need tagsView
