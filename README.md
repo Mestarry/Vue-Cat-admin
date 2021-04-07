@@ -10,8 +10,6 @@
 
 使用时，可直接将vue-element-admin的组件copy过来即可。
 
-[在线预览]( https://www.liwanbin.club/admin ) 
-
 #### 开发
 
 ```
@@ -28,7 +26,6 @@ npm install
 npm run serve
 ```
 
- 浏览器访问 [http://localhost:2019](http://localhost:2019/) 
 
 #### 发布
 
